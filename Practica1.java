@@ -64,3 +64,24 @@ public class Practica1 {
     }
 
     }
+
+//EJERCICIO 3
+public static<T> Collection<Set<T>> divideInSets (Iterator<T> it) {
+    Collection<Set<T>> resultado = new ArrayList<>();
+    Set<T> actual = new HashSet<>();
+
+    while (it.hasNext()) {
+        T elemento = it.next();
+        if (actual.contains(elemento)) {
+            resultado.add(actual);
+            actual = new HashSet<>();
+        }
+        actual.add(elemento);
+    }
+
+    if (!actual.isEmpty()) {
+        resultado.add(actual);
+    }
+
+    return resultado;
+}
