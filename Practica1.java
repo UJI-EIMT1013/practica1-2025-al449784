@@ -85,3 +85,25 @@ public static<T> Collection<Set<T>> divideInSets (Iterator<T> it) {
 
     return resultado;
 }
+
+//EJERCICIO 4
+public static<T> Collection<Set<T>> coverageSet2 (Set<T> u,ArrayList<Set<T>> col) {
+    Collection<Set<T>> resultado = new ArrayList<>();
+
+    for (int i = 0; i < col.size(); i++) {
+        for (int j = i + 1; j < col.size(); j++) {
+            Set<T> union = new HashSet<>();
+            union.addAll(col.get(i));
+            union.addAll(col.get(j));
+
+            if (union.equals(u)) {
+                resultado.add(col.get(i));
+                resultado.add(col.get(j));
+                return resultado;
+            }
+        }
+    }
+
+    return resultado; // Vacío si no se encontró ninguna pareja
+}
+
